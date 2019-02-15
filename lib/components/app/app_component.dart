@@ -25,7 +25,6 @@ class _AppComponentState extends State<AppComponent> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(),
         drawer: DrawerComponent(),
         bottomNavigationBar: BottomNavigationComponent(
           currentIndex: _which,

@@ -9,7 +9,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FullScreenComponent(
-      color: Colors.yellow,
+      color: Colors.amber,
       child: SplashComponent(),
     );
   }

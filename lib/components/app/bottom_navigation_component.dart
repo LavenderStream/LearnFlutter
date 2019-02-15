@@ -17,6 +17,8 @@ class _BottomNavigationComponentState extends State<BottomNavigationComponent> {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
+      /// 底部导航栏选中颜色
+      fixedColor: Colors.amber,
       onTap: widget.onTap,
       currentIndex: widget.currentIndex,
       items: [
