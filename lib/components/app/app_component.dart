@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:learn_flutter/components/app/api/api_component.dart';
 import 'package:learn_flutter/components/app/bottom_navigation_component.dart';
 import 'package:learn_flutter/components/app/drawer_component.dart';
-import 'package:learn_flutter/components/app/setting/setting_component.dart';
 import 'package:learn_flutter/components/app/stream/stream_component.dart';
 import 'package:learn_flutter/utils/log_util.dart';
 
@@ -13,16 +13,16 @@ class AppComponent extends StatefulWidget {
 
 class _AppComponentState extends State<AppComponent> {
   // 底部列表分页
-  final _pages = [
-    StreamComponent(),
-    SettingComponent(),
-  ];
+  final _pages = [];
 
   // 当前页面下标索引
   int _which = 0;
 
   @override
   Widget build(BuildContext context) {
+    _pages.add(StreamComponent());
+    _pages.add(ApiComponent(context));
+
     return MaterialApp(
       home: Scaffold(
         drawer: DrawerComponent(),
@@ -43,5 +43,11 @@ class _AppComponentState extends State<AppComponent> {
       _which = index;
     });
     LogUtil.d("BottomNavigationComponent -> _onTapClick -> $index");
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _pages.clear();
   }
 }

@@ -30,15 +30,15 @@ class _BottomNavigationComponentState extends State<BottomNavigationComponent> {
 
   _renderAppItem() {
     return BottomNavigationBarItem(
-      icon: new Icon(Icons.apps),
-      title: new Text('App'),
+      icon: Icon(Icons.keyboard_arrow_left),
+      title: Text('Haha'),
     );
   }
 
   _renderSettingItem() {
     return BottomNavigationBarItem(
-      icon: new Icon(Icons.settings),
-      title: new Text('Setting'),
+      icon: Icon(Icons.widgets),
+      title: Text('Widget'),
     );
   }
 }
