@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:learn_flutter/components/app/api/button_demo_component.dart';
 import 'package:learn_flutter/components/app/api/text_demo_component.dart';
 import 'package:learn_flutter/utils/log_util.dart';
 import 'package:learn_flutter/widget/scaffold_component.dart';
+import 'package:learn_flutter/components/app/api/image_demo_component.dart';
+import 'package:learn_flutter/components/app/api/check_demo_component.dart';
 
 class ApiComponent extends StatelessWidget {
-  final _apis = ["文字、文字样式", "按钮"];
+  final _apis = ["文字、文字样式", "按钮", "图片", "单选框、复选框"];
   final _parentContext;
 
   ApiComponent(this._parentContext);
@@ -45,6 +48,15 @@ class ApiComponent extends StatelessWidget {
     switch (index) {
       case 0:
         router = TextDemoComponent();
+        break;
+      case 1:
+        router = ButtonDemoComponent();
+        break;
+      case 2:
+        router = ImageDemoComponent();
+        break;
+      case 3:
+        router = CheckDemoComponent();
         break;
     }
 
