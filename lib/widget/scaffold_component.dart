@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 class ScaffoldComponent extends StatefulWidget {
   final child;
   final color;
+  final appbar;
 
-  ScaffoldComponent({Key k, @required this.child, this.color}) : super(key: k);
+  ScaffoldComponent({Key k, @required this.child, this.color, this.appbar})
+      : super(key: k);
 
   @override
   ScaffoldComponentState createState() => ScaffoldComponentState();
@@ -15,6 +17,7 @@ class ScaffoldComponentState extends State<ScaffoldComponent> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        appBar: widget.appbar,
         backgroundColor: widget.color,
         body: widget.child,
       ),
