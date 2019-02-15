@@ -23,58 +23,57 @@ class StreamComponentState extends State<StreamComponent> {
     return DefaultTabController(
       length: _tabs.length,
       child: Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          // 修改appBar 左侧边距
-          titleSpacing: 4,
-          backgroundColor: Colors.amber,
-          title: _renderTabBar(),
-        ),
-        body: _renderTabView(),
+        body: _renderNestedHeader(),
       ),
     );
   }
 
-  /// 添加一个有时差效果的头部
+  /// 添加一个有视差效果的头部
   Widget _renderNestedHeader() {
     return NestedScrollView(
-      body: Center(
-        child: Text("Sample Text"),
-      ),
-      headerSliverBuilder: ((context, innerBoxIsScrolled) => [
-            SliverOverlapAbsorber(
-              handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
-            ),
-          ]),
+      body: _renderTabView(),
+      headerSliverBuilder: _assembleHeaderSliverBuild,
     );
+  }
+
+  /// SliverBuild
+  List<Widget> _assembleHeaderSliverBuild(
+      BuildContext context, bool innerBoxIsScrolled) {
+    return [
+      SliverAppBar(
+        backgroundColor: Colors.amber,
+        pinned: true,
+        expandedHeight: 200.0,
+        forceElevated: innerBoxIsScrolled,
+        bottom: PreferredSize(
+          child: _renderTabBar(),
+          preferredSize: Size(double.infinity, 0),
+        ),
+      ),
+    ];
   }
 
   /// 添加顶部tabLayout
   Widget _renderTabBar() {
     return TabBar(
-      indicatorPadding: EdgeInsets.zero,
       tabs: _tabs,
       isScrollable: true,
       labelPadding: EdgeInsets.symmetric(horizontal: 10.0),
-      indicatorColor: Colors.amberAccent,
+      indicatorColor: Colors.white,
       labelColor: Colors.white,
     );
   }
 
   /// 添加分页页面
   Widget _renderTabView() {
-    return SafeArea(
-      top: false,
-      bottom: false,
-      child: TabBarView(
-        children: _tabs
-            .map((tab) => Stack(
-                  children: <Widget>[
-                    Text(tab.text),
-                  ],
-                ))
-            .toList(),
-      ),
+    return TabBarView(
+      children: _tabs
+          .map((tab) => Stack(
+                children: <Widget>[
+                  Text(tab.text),
+                ],
+              ))
+          .toList(),
     );
   }
 }
