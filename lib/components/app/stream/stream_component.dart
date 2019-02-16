@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:learn_flutter/widget/effect_scroll_view_behavior.dart';
 
 /// 信息流布局
 class StreamComponent extends StatefulWidget {
@@ -23,7 +24,10 @@ class StreamComponentState extends State<StreamComponent> {
     return DefaultTabController(
       length: _tabs.length,
       child: Scaffold(
-        body: _renderNestedHeader(),
+        body: ScrollConfiguration(
+          behavior: EffectScrollViewBehavior(),
+          child:  _renderNestedHeader(),
+        ),
       ),
     );
   }

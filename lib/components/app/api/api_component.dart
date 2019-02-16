@@ -5,6 +5,7 @@ import 'package:learn_flutter/utils/log_util.dart';
 import 'package:learn_flutter/widget/scaffold_component.dart';
 import 'package:learn_flutter/components/app/api/image_demo_component.dart';
 import 'package:learn_flutter/components/app/api/check_demo_component.dart';
+import 'package:learn_flutter/widget/effect_scroll_view_behavior.dart';
 
 class ApiComponent extends StatelessWidget {
   final _apis = ["文字、文字样式", "按钮", "图片", "单选框、复选框"];
@@ -19,9 +20,12 @@ class ApiComponent extends StatelessWidget {
         backgroundColor: Colors.amber,
         title: Text("Widgets"),
       ),
-      child: ListView.builder(
-        itemBuilder: (context, index) => _renderItemView(context, index),
-        itemCount: _apis.length,
+      child: ScrollConfiguration(
+        behavior: EffectScrollViewBehavior(),
+        child: ListView.builder(
+          itemBuilder: (context, index) => _renderItemView(context, index),
+          itemCount: _apis.length,
+        ),
       ),
     );
   }

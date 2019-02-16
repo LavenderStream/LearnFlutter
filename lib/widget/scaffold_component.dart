@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:learn_flutter/widget/effect_scroll_view_behavior.dart';
 
 class ScaffoldComponent extends StatefulWidget {
   final child;
@@ -16,6 +17,12 @@ class ScaffoldComponentState extends State<ScaffoldComponent> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      builder: (context, child){
+        return ScrollConfiguration(
+          behavior: EffectScrollViewBehavior(),
+          child: child,
+        );
+      },
       home: Scaffold(
         appBar: widget.appbar,
         backgroundColor: widget.color,
