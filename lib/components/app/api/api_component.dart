@@ -6,9 +6,10 @@ import 'package:learn_flutter/widget/scaffold_component.dart';
 import 'package:learn_flutter/components/app/api/image_demo_component.dart';
 import 'package:learn_flutter/components/app/api/check_demo_component.dart';
 import 'package:learn_flutter/widget/effect_scroll_view_behavior.dart';
+import 'package:learn_flutter/components/app/api/edit_demo_component.dart';
 
 class ApiComponent extends StatelessWidget {
-  final _apis = ["文字、文字样式", "按钮", "图片", "单选框、复选框"];
+  final _apis = ["文字、文字样式", "按钮", "图片", "单选框、复选框", "输入法和表单"];
   final _parentContext;
 
   ApiComponent(this._parentContext);
@@ -61,6 +62,9 @@ class ApiComponent extends StatelessWidget {
         break;
       case 3:
         router = CheckDemoComponent();
+        break;
+        case 4:
+        router = EditDemoComponent();
         break;
     }
 

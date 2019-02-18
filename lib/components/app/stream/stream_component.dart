@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learn_flutter/widget/effect_scroll_view_behavior.dart';
+import 'package:learn_flutter/components/app/stream/follow_stream_component.dart';
 
 /// 信息流布局
 class StreamComponent extends StatefulWidget {
@@ -26,7 +27,7 @@ class StreamComponentState extends State<StreamComponent> {
       child: Scaffold(
         body: ScrollConfiguration(
           behavior: EffectScrollViewBehavior(),
-          child:  _renderNestedHeader(),
+          child: _renderNestedHeader(),
         ),
       ),
     );
@@ -51,7 +52,11 @@ class StreamComponentState extends State<StreamComponent> {
         forceElevated: innerBoxIsScrolled,
         flexibleSpace: _renderFlexibleView(),
         bottom: PreferredSize(
-          child: _renderTabBar(),
+          // tab栏居左显示
+          child: Container(
+            alignment: Alignment.centerLeft,
+            child: _renderTabBar(),
+          ),
           preferredSize: Size(double.infinity, 0),
         ),
       ),
@@ -81,15 +86,19 @@ class StreamComponentState extends State<StreamComponent> {
   }
 
   /// 添加分页页面
+  /// 动态添加流页面布局
   Widget _renderTabView() {
+    final List<Widget> streams = [];
+    streams.add(FollowStreamComponent());
+    for (int i = 1; i < _tabs.length; i++) {
+      streams.add(Stack(
+        children: <Widget>[
+          Text(_tabs[i].text),
+        ],
+      ));
+    }
     return TabBarView(
-      children: _tabs
-          .map((tab) => Stack(
-                children: <Widget>[
-                  Text(tab.text),
-                ],
-              ))
-          .toList(),
+      children: streams,
     );
   }
 }
