@@ -1,6 +1,6 @@
 # learn_flutter
 
-Learn Flutter
+Learn Flutter  https://www.jianshu.com/p/aa5e78894824
 
 ## Getting Started
 
