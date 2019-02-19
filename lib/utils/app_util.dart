@@ -43,3 +43,17 @@ class UI {
     SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
   }
 }
+
+class Navigation {
+  /// 创建路由翻页动画
+  static SlideTransition createNavigationTransition(
+      Animation<double> animation, Widget child) {
+    return SlideTransition(
+      position: Tween<Offset>(
+        begin: const Offset(1.0, 0.0),
+        end: const Offset(0.0, 0.0),
+      ).animate(animation),
+      child: child,
+    );
+  }
+}

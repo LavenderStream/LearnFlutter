@@ -17,21 +17,25 @@ class _AppComponentState extends State<AppComponent> {
 
   // 当前页面下标索引
   int _which = 0;
+  int _last = 0;
 
   @override
   Widget build(BuildContext context) {
     _pages.add(StreamComponent());
     _pages.add(ApiComponent(context));
 
-    return MaterialApp(
-      home: Scaffold(
-        drawer: DrawerComponent(),
-        bottomNavigationBar: BottomNavigationComponent(
-          currentIndex: _which,
-          onTap: _onTapClick,
-        ),
-        body: Center(
-          child: _pages[_which],
+    return WillPopScope(
+      onWillPop: _doubleExit,
+      child: MaterialApp(
+        home: Scaffold(
+          drawer: DrawerComponent(),
+          bottomNavigationBar: BottomNavigationComponent(
+            currentIndex: _which,
+            onTap: _onTapClick,
+          ),
+          body: Center(
+            child: _pages[_which],
+          ),
         ),
       ),
     );
@@ -43,6 +47,18 @@ class _AppComponentState extends State<AppComponent> {
       _which = index;
     });
     LogUtil.d("BottomNavigationComponent -> _onTapClick -> $index");
+  }
+
+  /// true 意味着退出
+  Future<bool> _doubleExit() {
+    int now = DateTime.now().millisecondsSinceEpoch;
+    print(now - _last);
+    if (now - _last < 800) {
+      return Future.value(true);
+    } else {
+      _last = DateTime.now().millisecondsSinceEpoch;
+      return Future.value(false);
+    }
   }
 
   @override
