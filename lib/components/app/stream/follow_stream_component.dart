@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:learn_flutter/widget/effect_scroll_view_behavior.dart';
-import 'package:learn_flutter/utils/app_util.dart';
 
 class FollowStreamComponent extends StatefulWidget {
   _FollowStreamComponentState createState() => _FollowStreamComponentState();

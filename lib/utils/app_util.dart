@@ -1,7 +1,9 @@
 import 'dart:ui';
 
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
+import 'package:fluttertoast/fluttertoast.dart' as FlutterToast;
 
 class UI {
   /// 获取设备宽度
@@ -54,6 +56,20 @@ class Navigation {
         end: const Offset(0.0, 0.0),
       ).animate(animation),
       child: child,
+    );
+  }
+}
+
+class Toast {
+  static void show(String message) {
+    FlutterToast.Fluttertoast.showToast(
+      msg: message,
+      toastLength: FlutterToast.Toast.LENGTH_SHORT,
+      gravity: FlutterToast.ToastGravity.BOTTOM,
+      timeInSecForIos: 1,
+      backgroundColor: Colors.amber,
+      textColor: Colors.black,
+      fontSize: 14,
     );
   }
 }

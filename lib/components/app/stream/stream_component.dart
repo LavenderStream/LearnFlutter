@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:learn_flutter/widget/effect_scroll_view_behavior.dart';
 import 'package:learn_flutter/components/app/stream/follow_stream_component.dart';
+import 'package:learn_flutter/utils/app_util.dart';
+import 'package:learn_flutter/widget/effect_scroll_view_behavior.dart';
 
 /// 信息流布局
 class StreamComponent extends StatefulWidget {
@@ -8,7 +9,8 @@ class StreamComponent extends StatefulWidget {
   StreamComponentState createState() => StreamComponentState();
 }
 
-class StreamComponentState extends State<StreamComponent> {
+class StreamComponentState extends State<StreamComponent>
+    with AutomaticKeepAliveClientMixin<StreamComponent> {
   final List<Tab> _tabs = <Tab>[
     Tab(text: '关注'),
     Tab(text: '手机'),
@@ -19,6 +21,12 @@ class StreamComponentState extends State<StreamComponent> {
     Tab(text: '运动'),
     Tab(text: '美食'),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    Toast.show("Haha 页面创建");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -101,4 +109,7 @@ class StreamComponentState extends State<StreamComponent> {
       children: streams,
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
