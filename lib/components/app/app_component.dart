@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:learn_flutter/components/app/api/api_component.dart';
 import 'package:learn_flutter/components/app/bottom_navigation_component.dart';
 import 'package:learn_flutter/components/app/drawer_component.dart';
 import 'package:learn_flutter/components/app/stream/double_back_component.dart';
 import 'package:learn_flutter/components/app/stream/stream_component.dart';
 import 'package:learn_flutter/components/app/tick_mode_component.dart';
+import 'package:learn_flutter/locale/translations_delegate.dart';
 import 'package:learn_flutter/utils/log_util.dart';
 
 /// 程序首页
@@ -21,6 +23,15 @@ class _AppComponentState extends State<AppComponent> {
   Widget build(BuildContext context) {
     return DoubleBackComponent(
       child: MaterialApp(
+        localizationsDelegates: [
+          const TranslationsDelegate(),
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+        ],
+        supportedLocales: [
+          const Locale('en'),
+          const Locale('zh'),
+        ],
         home: Scaffold(
           drawer: DrawerComponent(),
           bottomNavigationBar: BottomNavigationComponent(

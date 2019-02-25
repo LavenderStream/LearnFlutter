@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
-import 'components/splash/splash_component.dart';
-import 'widget/full_screen_widget.dart';
+import 'package:learn_flutter/components/splash/splash_component.dart';
+import 'package:learn_flutter/widget/full_screen_widget.dart';
 
 void main() => runApp(App());
 

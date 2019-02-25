@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:learn_flutter/locale/translations_delegate.dart';
 import 'package:learn_flutter/utils/constants.dart';
 import 'package:learn_flutter/utils/log_util.dart';
 import 'package:learn_flutter/utils/shared_preferences_util.dart';

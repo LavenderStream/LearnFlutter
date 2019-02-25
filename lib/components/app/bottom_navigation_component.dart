@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:learn_flutter/locale/translations_delegate.dart';
+import 'package:learn_flutter/utils/log_util.dart';
+
 
 /// 应用底部导航栏
 class BottomNavigationComponent extends StatefulWidget {
@@ -22,23 +25,27 @@ class _BottomNavigationComponentState extends State<BottomNavigationComponent> {
       onTap: widget.onTap,
       currentIndex: widget.currentIndex,
       items: [
-        _renderAppItem(),
-        _renderSettingItem(),
+        _renderAppItem(context),
+        _renderSettingItem(context),
       ],
     );
   }
 
-  _renderAppItem() {
+  _renderAppItem(BuildContext context) {
     return BottomNavigationBarItem(
       icon: Icon(Icons.keyboard_arrow_left),
-      title: Text('Haha'),
+      title: Text(
+        Translations.of(context).text('app_navigation_bar_haha'),
+      ),
     );
   }
 
-  _renderSettingItem() {
+  _renderSettingItem(BuildContext context) {
     return BottomNavigationBarItem(
       icon: Icon(Icons.widgets),
-      title: Text('Widget'),
+      title: Text(
+        Translations.of(context).text('app_navigation_bar_widget'),
+      ),
     );
   }
 }
